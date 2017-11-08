@@ -1,8 +1,22 @@
 <% provide(:title, "Home") %>
-<div class="jumbotron">
-  <div class="container">
-      <h1>Hoang Bui</h1>
-      <h2>This is the home page</h2>
-      <%= link_to "Sign up now!", signup_path, class: "btn btn-primary btn-lg outline" %>
+
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="micropost_form">
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
   </div>
-</div>
+<% else %>
+  <div class="jumbotron">
+    <div class="container">
+        <h1>Hoang Bui</h1>
+        <h2>This is the home page</h2>
+        <%= link_to "Sign up now!", signup_path, class: "btn btn-primary btn-lg outline" %>
+    </div>
+  </div>
+<% end %>

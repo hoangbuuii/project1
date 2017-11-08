@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @microposts = @user.microposts.order_by_created_at_desc
+      .paginate page: params[:page], per_page: Settings.per_page
   end
 
   def index
@@ -49,14 +51,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-  end
 
   def load_user
     @user = User.find_by id: params[:id]
