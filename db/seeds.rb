@@ -28,3 +28,9 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+microposts = Micropost.order(:created_at).take(6)
+50.times do
+  content = Faker::LeagueOfLegends.quote
+  microposts.each { |micropost| micropost.comments.create!(user_id: 1, content: content) }
+end

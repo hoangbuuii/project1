@@ -7,7 +7,8 @@ class User < ApplicationRecord
 
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-
+  has_many :comments, dependent: :destroy
+  
   before_save {email.downcase!}
   validates :name, presence: true,length: {maximum: Settings.user_max_length_name}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -39,10 +40,10 @@ class User < ApplicationRecord
   end
 
   def unfollow other_user
-    following.delete(other_user)
+    following.delete other_user
   end
 
   def following? other_user
-    following.include?(other_user)
+    following.include? other_user
   end
 end

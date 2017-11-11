@@ -28,6 +28,7 @@ class CreateComments < ActiveRecord::Migration[5.1]
     add_index :relationships, :follower_id
     add_index :relationships, :followed_id
     add_index :relationships, [:follower_id, :followed_id], unique: true
+    
     create_table :comments do |t|
       t.text :content
       t.references :user, foreign_key: true
