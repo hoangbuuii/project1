@@ -5,7 +5,7 @@
   <span class="timestamp">
     Commented <%= time_ago_in_words(comment.created_at) %> ago.
     <% if current_user? comment.user %>
-      <%= link_to "delete", comment, method: :delete, data: { confirm: "You sure?" } %>
+      <%= link_to t("delete"), comment, method: :delete, data: { confirm: t("you_sure") } %>
     <% end %> 
   </span>
 </li>

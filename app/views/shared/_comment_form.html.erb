@@ -1,9 +1,9 @@
 <%= form_for([@micropost, @comment]) do |f| %>
   <%= render "shared/error_messages", object: f.object %>
   <div class="field col-md-8">
-    <%= f.text_field :content, placeholder: "Comment something...", class: "form-control" %>
+    <%= f.text_field :content, placeholder: t("comment_sth"), class: "form-control" %>
   </div>
   <div class="col-md-4">
-    <%= f.submit "Comment", class: "btn btn-primary" %>
+    <%= f.submit t("comment"), class: "btn btn-primary" %>
   </div>
 <% end %>
