@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       log_in @user 
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = t "welcome"
       redirect_to @user
     else
       render :new
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes user_params
-      flash[:success] = "Profile updated"
+      flash[:success] = t "profile_updated"
       redirect_to @user
     else
       render :edit
@@ -43,25 +43,25 @@ class UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      flash[:success] = "user_deleted"
+      flash[:success] = t "user_deleted"
     else
-      flash[:danger] = "user_cannot_be_deleted"
+      flash[:danger] = t "user_cannot_be_deleted"
     end
     redirect_to users_url
   end
   
   def following
-    @title = "Following"
+    @title = t "following"
     @user  = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
-    render 'show_follow'
+    render :show_follow
   end
 
   def followers
-    @title = "Followers"
+    @title = t "followers"
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
-    render 'show_follow'
+    render :show_follow
   end
 
   private
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   def load_user
     @user = User.find_by id: params[:id]
     return if @user
-    flash[:warning] = "Cannot find user"
+    flash[:warning] = t "cannot_find_user"
     redirect_to root_path
   end
 

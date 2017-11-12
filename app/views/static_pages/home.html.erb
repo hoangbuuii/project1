@@ -1,4 +1,4 @@
-<% provide(:title, "Home") %>
+<% provide :title, t("home") %>
 
 <% if logged_in? %>
   <div class="row">
@@ -20,8 +20,8 @@
 <% else %>
   <div class="row">
     <aside class="col-md-4">
-      <h1>Hoang Bui</h1>
-      <h2>This is the home page</h2>
+      <h1><%= t "project_1" %></h1>
+      <h2><%= t "title" %></h2>
       <%= link_to "Sign up now!", signup_path, class: "btn btn-primary btn-lg" %>
     </aside>
       <div class="col-md-8">

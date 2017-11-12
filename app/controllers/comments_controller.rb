@@ -9,18 +9,18 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      flash[:success] = "comment created"
+      flash[:success] = t "comment_created"
     else
-      flash[:warning] = "You missed sth"
+      flash[:warning] = t "comment_cannot_be_created"
     end
     redirect_to request.referrer || root_url
   end
 
   def destroy
     if @comment.destroy
-      flash[:success] = "comment deleted"
+      flash[:success] = t "comment_deleted"
     else
-      flash[:warning] = "cannot delete"
+      flash[:warning] = t "comment_cannot_be_deletes"
     end
     redirect_to request.referrer || root_url
   end
@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
   def load_micropost
     @micropost = Micropost.find_by id: params[:micropost_id]
     return if @micropost
-    flash[:warning] = "Cannot find micropost"
+    flash[:warning] = t "cannot_find_micropost"
     redirect_to root_path
   end
 end

@@ -19,7 +19,7 @@ class RelationshipsController < ApplicationController
 
   def check_valid user
     return if user
-    flash[:warning] = "cannot_find_user"
+    flash[:warning] = t "cannot_find_user"
     redirect_to root_path
   end
 

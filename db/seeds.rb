@@ -15,7 +15,7 @@ User.create!(name:  "Example User",
     is_admin: false)
 end
 
-users = User.order(:created_at).take(6)
+users = User.order(:created_at).take(50)
 50.times do
   title = Faker::LeagueOfLegends.rank
   content = Faker::LeagueOfLegends.quote
@@ -29,8 +29,8 @@ followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
-microposts = Micropost.order(:created_at).take(6)
-50.times do
+microposts = Micropost.order(:created_at).take(50)
+10.times do
   content = Faker::LeagueOfLegends.quote
   microposts.each { |micropost| micropost.comments.create!(user_id: 1, content: content) }
 end

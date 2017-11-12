@@ -12,18 +12,18 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build micropost_params
     if @micropost.save
-      flash[:success] = "microposts created"
+      flash[:success] = t "micropost_created"
     else
-      flash[:warning] = "You missed sth"
+      flash[:warning] = t "micropost_cannot_be_created"
     end
     redirect_to request.referrer || root_url
   end
 
   def destroy
     if @micropost.destroy
-      flash[:success] = "micropost_deleted"
+      flash[:success] = t "micropost_deleted"
     else
-      flash[:warning] = "cannot_delete"
+      flash[:warning] = t "micropost_cannot_be_deleted"
     end
     redirect_to request.referrer || root_url
   end
@@ -42,7 +42,7 @@ class MicropostsController < ApplicationController
   def load_micropost
     @micropost = Micropost.find_by id: params[:id]
     return if @micropost
-    flash[:warning] = "Cannot find micropost"
+    flash[:warning] = t "cannot_find_micropost"
     redirect_to root_path
   end
 end
