@@ -23,10 +23,15 @@ en:
   ##microposts
   #micropost
   #show
+  posted: "Posted"
+  ago: "ago"
+  comments: "Comments"
+  #index
+  search_post: "Search post by title"
 
   ##sessions
   #new
-  sign_up_now: "New user? Sign up now!"
+  sign_up_now: "Sign up now!"
 
   ##shared
   #comment_form
@@ -41,6 +46,8 @@ en:
   followers: "followers"
   #user_info
   view_my_profile: "View my profile"
+  #search_post
+  search: "Search"
 
   ##static pages
   #home
@@ -92,3 +99,4 @@ en:
   profile_updated: "Profile updated"
   user_deleted: "User is created!"
   user_cannot_be_deleted: "User cannot be deleted!"
+ 

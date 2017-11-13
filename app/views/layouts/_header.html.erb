@@ -3,7 +3,7 @@
     <%= link_to t("project_1"), root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-      	<li><%= link_to t("help"), help_path %></li>
+        
         <% if logged_in? %>
           <li><%= link_to t("users"), users_path %></li>
           <li class="dropdown">
@@ -20,6 +20,7 @@
             </ul>
           </li>
         <% else %>
+          <li><%= link_to t("sign_up_now"), signup_path %></li>
           <li><%= link_to t("log_in"), login_path %></li>
         <% end %>
       </ul>

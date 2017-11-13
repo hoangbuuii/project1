@@ -1,0 +1,10 @@
+<% provide :title, t("search_post") %>
+<h1><%= t "search_post" %></h1>
+
+<%= will_paginate %>
+
+<ul class="microposts">
+  <%= render @microposts %>
+</ul>
+
+<%= will_paginate %>
