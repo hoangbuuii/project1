@@ -1,0 +1,10 @@
+user_max_length_name: 50
+user_max_length_email: 255
+user_min_length_password: 6
+gravatar_size: 80
+gravatar_small_size: 50
+gravatar_smaller_size: 30
+post_max_length_title: 100
+post_max_length_content: 200
+per_page: 5
+comment_max_length_content: 200
