@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :correct_user, only: :destroy
   before_action :logged_in_user, only: %i(create destroy)
+  before_action :correct_user, only: :destroy
   before_action :load_micropost, only: :create
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new comment_params
     @comment.micropost = @micropost
     @comment.user = current_user
 

@@ -1,10 +1,20 @@
 class MicropostsController < ApplicationController
-  before_action :correct_user, only: :destroy
-  before_action :load_micropost, except: :create
   before_action :logged_in_user, only: %i(create destroy)
+  before_action :correct_user, only: :destroy
+  before_action :load_micropost, except: %i(create index)
+
+  def index
+    if params[:search]
+      @microposts = Micropost.search(params[:search]).order_by_created_at_desc
+        .paginate page: params[:page], per_page: Settings.per_page
+    else
+      @microposts = Micropost.all.order_by_created_at_desc
+        .paginate page: params[:page], per_page: Settings.per_page
+    end
+  end
 
   def show
-    @comment  = @micropost.comments.build(params[:comment])
+    @comment = @micropost.comments.build(params[:comment])
     @comments = @micropost.comments.order_by_created_at_desc
       .paginate page: params[:page], per_page: Settings.per_page
   end
