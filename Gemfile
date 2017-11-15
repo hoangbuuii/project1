@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+ruby "2.4.2"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -20,7 +21,6 @@ gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.4"
 gem "rails-controller-testing"
 gem "sass-rails", "~> 5.0"
-gem "sqlite3"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "will_paginate", "3.1.5"
@@ -32,6 +32,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "sqlite3"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
