@@ -1,0 +1,30 @@
+<% provide(:title, @micropost.title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @micropost.user %>
+        <%= link_to @micropost.user.name, @micropost.user %>
+      </h1>
+    </section>
+    <big><div class="title"><%= link_to @micropost.title, @micropost %></div></big>
+    <div class="content"><%= @micropost.content %></div>
+    <div class="timestamp">
+      <%= t "posted" %> <%= time_ago_in_words(@micropost.created_at) %> <%= t "ago" %>.
+    </div>
+  </aside>
+  <div class="col-md-8">
+    <% if @micropost.comments.any? %>
+      <h3><%= t "comments" %> (<%= @micropost.comments.count %>)</h3>
+      <ol class="comments">
+        <%= render @comments, micropost: @micropost %>
+      </ol>
+      <%= will_paginate @comments %>
+    <% end %>
+    <% if logged_in? %>
+      <% if current_user.following?(@micropost.user) || current_user?(@micropost.user) %>
+        <%= render "shared/comment_form" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
